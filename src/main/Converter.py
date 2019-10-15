@@ -5,7 +5,7 @@ import CsvMaker as cm
 class Converter:
      #入力情報を返す
      def inputFilePath(self):
-          print('変換したいXMLファイルもしくはCSVファイルのpathを指定してください。')
+          print('変換したいXMLファイルもしくはCSVファイルの名前を指定してください。')
           filePath = input()
           return filePath
 
