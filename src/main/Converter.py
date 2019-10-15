@@ -22,8 +22,6 @@ class Converter:
                xm.makeXml(readFile, writeFile)
           else:
                cm.makeCsv(readFile, writeFile)
-               pass
-               
 
 if __name__ == '__main__':
      cv = Converter()
