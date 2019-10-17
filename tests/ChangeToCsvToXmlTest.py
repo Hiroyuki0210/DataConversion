@@ -1,7 +1,7 @@
 import unittest
 import sys
-sys.path.append('../main')
-import Converter
+from converter import Converter
+
 
 #XML→CSV→XML変換テスト
 class ChangeToCsvToXmlTest(unittest.TestCase):
@@ -15,9 +15,9 @@ class ChangeToCsvToXmlTest(unittest.TestCase):
 
      def test_changeToCsvToXml(self):
           cv = Converter.Converter()
-          readFile = '../../TestFile/BeforeConversion/before.xml'
-          firstWriteFile = '../../TestFile/AfterConversion/after.csv'
-          secondWriteFile = '../../TestFile/AfterConversion/after.xml'
+          readFile = 'sample/BeforeConversion/before.xml'
+          firstWriteFile = 'sample/AfterConversion/after.csv'
+          secondWriteFile = 'sample/AfterConversion/after.xml'
 
           #CSVへの変換
           cv.conversion(readFile, firstWriteFile)
@@ -27,7 +27,7 @@ class ChangeToCsvToXmlTest(unittest.TestCase):
           with open(secondWriteFile) as rf:
                resultValue = rf.read()
 
-          expectedFilePath = '../../TestFile/ExpectedFile/expected.xml'
+          expectedFilePath = 'sample/ExpectedFile/expected.xml'
           with open(expectedFilePath) as xf:
                expectedValue = xf.read()
 

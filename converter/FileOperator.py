@@ -7,8 +7,8 @@ class FileOperator:
                print('ファイル形式が誤っています')
                sys.exit(1)
 
-          csvFile = '../../BeforeConversion/CsvFiles/' + fileName
-          xmlFile = '../../BeforeConversion/XmlFiles/' + fileName
+          csvFile = 'BeforeConversion/CsvFiles/' + fileName
+          xmlFile = 'BeforeConversion/XmlFiles/' + fileName
           if os.path.exists(csvFile) or os.path.exists(xmlFile):
                if os.path.exists(csvFile):
                     self.readFile = csvFile

@@ -1,6 +1,6 @@
-import FileOperator
-import XmlMaker as xm
-import CsvMaker as cm
+from converter import FileOperator
+from converter import XmlMaker as xm
+from converter import CsvMaker as cm
 
 class Converter:
      #入力情報を返す
@@ -23,7 +23,7 @@ class Converter:
           else:
                cm.makeCsv(readFile, writeFile)
 
-if __name__ == '__main__':
+def main():
      cv = Converter()
      fileName = cv.inputFilePath()
      fo = FileOperator.FileOperator(fileName)
