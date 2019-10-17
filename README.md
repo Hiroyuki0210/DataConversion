@@ -46,22 +46,12 @@ CSVファイルをXMLファイルに変換すると、XML側では、ルート�
 cmdでプロジェクトをクローンします。  
  `git clone https://github.com/Hiroyuki0210/DataConversion.git`  
  
-### アプリの実行手順  
-#### 1. 変換したいCSVファイルもしくはXMLファイルをBeforeConversionフォルダ に入れる  
-BeforeConversionフォルダには、CsvFilesフォルダとXmlFilesフォルダがあります。  
-CSVファイルはCsvFilesフォルダ、XMLファイルはXmlFilesフォルダに入れます。  
-![image](https://user-images.githubusercontent.com/51352734/66799801-943c2280-ef4d-11e9-9dd4-b7f351d67a7f.png)
-
-  
-#### 2. 実行  
-次のように実行します。  
-`py.exe -m converter`  
-実行すると、変換したいファイルの名前を要求されますので、ファイル名を入力します。  
-```
-変換したいXMLファイルもしくはCSVファイルの名前を指定してください。  
->>users.csv
-```  
-ここで、入力するファイル名はBeforeConversionフォルダにあるものに限ります。  
+### アプリの実行  
+次のように、ファイルのパスを含めて実行します。  
+`py.exe -m converter 変換したいファイルのパス`  
+複数のファイルをまとめて変換したい場合は、  
+`py.exe -m converter 変換したいファイル1のパス 変換したいファイル2のパス ・・・`  
+のように、半角スペースを空けて複数のファイルパスを入力します。  
   
 ・上手く実行された(変換に成功した)場合は  
 AfterConversionフォルダに変換されたファイルが格納されます。  
