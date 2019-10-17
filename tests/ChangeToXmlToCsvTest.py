@@ -1,5 +1,6 @@
 import unittest
 import sys
+sys.path.append('../')
 from converter import Converter
 
 
