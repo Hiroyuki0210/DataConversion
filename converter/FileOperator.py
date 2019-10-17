@@ -2,21 +2,16 @@ import os
 import sys
 
 class FileOperator:
-     def __init__(self, fileName):
-          if ('csv' not in fileName) and ('xml' not in fileName):
-               print('ファイル形式が誤っています')
+     def __init__(self, readFile):
+          if ('csv' not in readFile) and ('xml' not in readFile):
+               print('誤ったファイル形式を入力しています')
                sys.exit(1)
 
-          csvFile = 'BeforeConversion/CsvFiles/' + fileName
-          xmlFile = 'BeforeConversion/XmlFiles/' + fileName
-          if os.path.exists(csvFile) or os.path.exists(xmlFile):
-               if os.path.exists(csvFile):
-                    self.readFile = csvFile
-               else:
-                    self.readFile = xmlFile
+          if os.path.exists(readFile):
+               self.readFile = readFile
           else:
                try:
-                    raise AttributeError('そのようなファイルは存在しません')
+                    raise AttributeError('存在しないファイルを入力しています')
                except AttributeError as e:
                     print(e)
                     print(type(e))
@@ -25,12 +20,21 @@ class FileOperator:
           return self.readFile
 
      def getWriteFile(self):
+          readFile = self.readFile
           writeFile = ''
 
-          if 'csv' in self.readFile:
-               writeFile = self.readFile.replace('csv', 'xml').replace('BeforeConversion/CsvFiles', 'AfterConversion/XmlFiles')
+          if ('csv' in readFile):
+               if '/' in readFile:
+                    fileName = readFile[readFile.rfind('/') + 1 : readFile.index('.csv')]
+               else:
+                    fileName = readFile[0 : readFile.index('.csv')]
+               writeFile = 'AfterConversion/XmlFiles/' + fileName + '.xml'
 
-          if 'xml' in self.readFile:
-               writeFile = self.readFile.replace('xml', 'csv').replace('BeforeConversion/XmlFiles', 'AfterConversion/CsvFiles')
+          if ('xml' in readFile):
+               if '/' in readFile:
+                    fileName = readFile[readFile.rfind('/') + 1 : readFile.index('.xml')]
+               else:
+                    fileName = readFile[0 : readFile.index('.xml')]
+               writeFile = 'AfterConversion/CsvFiles/' + fileName + '.csv'
 
           return writeFile
