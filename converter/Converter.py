@@ -1,13 +1,18 @@
 from converter import FileOperator
 from converter import XmlMaker as xm
 from converter import CsvMaker as cm
+import sys
 
 class Converter:
-     #入力情報を返す
-     def inputFilePath(self):
-          print('変換したいXMLファイルもしくはCSVファイルの名前を指定してください。')
-          filePath = input()
-          return filePath
+     #コマンドライン引数で指定したファイルリストを返す
+     #(元からコマンドライン引数に含まれている__main__.pyは返さない)
+     def getFiles(self):
+          args = sys.argv
+          files = []
+          for arg in args:
+               if '__main__.py' not in arg:
+                    files.append(arg)
+          return files
 
      #CSVファイルかXMLファイルかの判断
      def choiceXmlOrCsv(self, filePath):
@@ -25,9 +30,10 @@ class Converter:
 
 def main():
      cv = Converter()
-     fileName = cv.inputFilePath()
-     fo = FileOperator.FileOperator(fileName)
-     readFile = fo.getReadFile()
-     writeFile = fo.getWriteFile()
+     files = cv.getFiles()
 
-     cv.conversion(readFile, writeFile)
+     for file in files:
+          fo = FileOperator.FileOperator(file)
+          readFile = fo.getReadFile()
+          writeFile = fo.getWriteFile()
+          cv.conversion(readFile, writeFile)
