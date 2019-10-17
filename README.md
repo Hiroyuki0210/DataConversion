@@ -54,8 +54,8 @@ CSVファイルはCsvFilesフォルダ、XMLファイルはXmlFilesフォルダ�
 
   
 #### 2. 実行  
-DataConversion\src\main まで進み、`Converter.py` を次のように実行します。  
-`py.exe Converter.py`  
+次のように実行します。  
+`py.exe -m converter`  
 実行すると、変換したいファイルの名前を要求されますので、ファイル名を入力します。  
 ```
 変換したいXMLファイルもしくはCSVファイルの名前を指定してください。  
